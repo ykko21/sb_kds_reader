@@ -108,27 +108,15 @@ public class ContactEventService {
                     log.info("Contact event with ID {} already exists, skipping.", id);
                     continue;
                 }
-                log.info("1");
                 JsonNode detailNode = rootNode.get("detail");
-                log.info("2");
                 String eventType = detailNode.get("eventType").asText();
-                log.info("3");
                 String contactId = detailNode.get("contactId").asText();
-                log.info("4");
                 String channel = detailNode.get("channel").asText();
-                log.info("5");
                 String initialContactId = (detailNode.get("initialContactId") == null)?"":detailNode.get("initialContactId").asText();
-                log.info("6");
                 String previousContactId = (detailNode.get("previousContactId") == null)?"":detailNode.get("previousContactId").asText();
-                log.info("7");
                 String initiationMethod = (detailNode.get("initiationMethod") == null)?"":detailNode.get("initiationMethod").asText();
-                log.info("8");
-                String initiationTimestamp = (detailNode.get("initiationTimestamp") == null)?"":detailNode.get("initiationTimestamp").asText();
-                log.info("9");
-                String connectedToSystemTimestamp = (detailNode.get("connectedToSystemTimestamp") == null)?"":detailNode.get("connectedToSystemTimestamp").asText();
-                log.info("10");
+                String initiationTimestamp = (detailNode.get("initiationTimestamp") == null)?"":detailNode.get("initiationTimestamp").asText();                String connectedToSystemTimestamp = (detailNode.get("connectedToSystemTimestamp") == null)?"":detailNode.get("connectedToSystemTimestamp").asText();
                 String disconnectTimestamp = (detailNode.get("disconnectTimestamp") == null)?"":detailNode.get("disconnectTimestamp").asText();
-                log.info("11");
                 JsonNode agentInfo = detailNode.get("agentInfo");
                 String agentArn = null;
                 if(agentInfo != null) {
@@ -148,7 +136,6 @@ public class ContactEventService {
                 event.setDisconnectTimestamp(disconnectTimestamp);
                 event.setAgentArn(agentArn);
                 event.setFullData(data);
-                log.info("before saving...");
                 contactEventRepository.save(event);
                 log.info("Saved contact event with ID: {}", id);
             }
