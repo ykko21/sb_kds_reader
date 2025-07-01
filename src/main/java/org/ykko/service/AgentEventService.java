@@ -151,6 +151,7 @@ public class AgentEventService {
                 agentEvent.setEventUnixTimestamp(eventUnixTimestamp);
                 agentEvent.setFullData(data);
                 agentEventRepository.save(agentEvent);
+                log.info("Saved agent event with EventId: {}", eventId);
             }
 
             iterator = recordsResponse.nextShardIterator();
