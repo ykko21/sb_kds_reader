@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS agent_event (
 	event_id TEXT PRIMARY KEY,
 	shard_id TEXT,
 	username TEXT,
+	agent_arn TEXT,
 	agent_status TEXT,
 	event_type TEXT,
 	contact_id TEXT,

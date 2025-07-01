@@ -20,6 +20,9 @@ public class AgentEvent {
     @Column(name="username")
     private String username;
 
+    @Column(name="agent_arn")
+    private String agentArn;
+
     @Column(name="agent_status")
     private String agentStatus;
 

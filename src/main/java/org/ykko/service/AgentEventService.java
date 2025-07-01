@@ -113,6 +113,7 @@ public class AgentEventService {
                 Long eventUnixTimestamp = DateUtil.convertISOTimestampToUnixTimestamp(eventTimestamp);
                 JsonNode currentAgentSnapshotNode = rootNode.get("CurrentAgentSnapshot");
                 JsonNode agentStatusNode = currentAgentSnapshotNode.get("AgentStatus");
+                String agentArn = agentStatusNode.get("ARN").asText();
                 String agentStatus = agentStatusNode.get("Type").asText();
                 JsonNode configurationNode = currentAgentSnapshotNode.get("Configuration");
                 String username = configurationNode.get("Username").asText();
@@ -137,6 +138,7 @@ public class AgentEventService {
                 agentEvent.setEventId(eventId);
                 agentEvent.setShardId(shardId);
                 agentEvent.setUsername(username);
+                agentEvent.setAgentArn(agentArn);
                 agentEvent.setAgentStatus(agentStatus);
                 agentEvent.setEventType(eventType);
                 agentEvent.setContactId(contactId);

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.ykko.config.AppConfig;
+import org.ykko.repository.ContactEvent;
 import org.ykko.util.DateUtil;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
@@ -94,8 +95,37 @@ public class ContactEventService {
 
             for (Record record : recordsResponse.records()) {
                 String data = StandardCharsets.UTF_8.decode(record.data().asByteBuffer()).toString();
-                log.info(data);
-                log.info("");
+                //log.info(data);
+                //log.info("");
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode rootNode = mapper.readTree(data);
+                String id = rootNode.get("id").asText();
+                JsonNode detailNode = rootNode.get("detail");
+                String eventType = detailNode.get("eventType").asText();
+                String contactId = detailNode.get("contactId").asText();
+                String initialContactId = detailNode.get("initialContactId").asText();
+                String previousContactId = detailNode.get("previousContactId").asText();
+                String initiationMethod = detailNode.get("initiationMethod").asText();
+                String initiationTimestamp = detailNode.get("initiationTimestamp").asText();
+                String connectedToSystemTimestamp = detailNode.get("connectedToSystemTimestamp").asText();
+                String disconnectTimestamp = detailNode.get("disconnectTimestamp").asText();
+                JsonNode agentInfo = detailNode.get("agentInfo");
+                String agentArn = null;
+                if(agentInfo != null) {
+                    agentArn = agentInfo.get("agentArn").asText();
+                }
+                ContactEvent event = new ContactEvent();
+                event.setId(id);
+                event.setEventType(eventType);
+                event.setContactId(contactId);
+                event.setInitialContactId(initialContactId);
+                event.setPreviousContactId(previousContactId);
+                event.setInitiationMethod(initiationMethod);
+                event.setInitiationTimestamp(initiationTimestamp);
+                event.setConnectedToSystemTimestamp(connectedToSystemTimestamp);
+                event.setDisconnectTimestamp(disconnectTimestamp);
+                event.setAgentArn(agentArn);
+                event.setFullData(data);
             }
 
             iterator = recordsResponse.nextShardIterator();
