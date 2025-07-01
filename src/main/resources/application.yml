@@ -1,5 +1,34 @@
 spring:
   application:
     name: demo
+  datasource:
+    url: jdbc:h2:tcp://localhost:9092/~/mydb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      auto-commit: true
+      minimum-idle: 2
+      maximum-pool-size: 10
+      pool-name: H2Pool
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 server:
-  port: 8080
+  port: 8090
+aws:
+  region: us-east-1
+  kds:
+    agent-event:
+      name: aws-connect-agent-events
+      lookback-hours: 8
+    contact-trace-record:
+      name: aws-connect-ctr-events
+      lookback-hours: 8
+    contact-event:
+      name: aws-connect-contact-events
+      lookback-hours: 8
