@@ -1,0 +1,1 @@
+java -Dsource.event=agent -jar target/demo-0.0.1-SNAPSHOT.jar

@@ -16,4 +16,12 @@ public class AppConfig {
 
     @Value("${aws.kds.agent-event.lookback-hours}")
     private Long agentEventKDSLookbackHours;
+
+    @Value("${aws.kds.contact-event.name}")
+    private String contactEventKDSName;
+
+    @Value("${aws.kds.contact-event.lookback-hours}")
+    private Long contactEventKDSLookbackHours;
+
+
 }

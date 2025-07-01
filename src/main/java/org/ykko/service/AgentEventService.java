@@ -26,7 +26,7 @@ import java.util.concurrent.Executors;
 
 @Service
 @Slf4j
-public class KinesisService {
+public class AgentEventService {
 
     private final String STREAM_NAME;
     private final Long LOOKBACK_HOURS;
@@ -37,7 +37,7 @@ public class KinesisService {
     @Autowired
     private AgentEventRepository agentEventRepository;
 
-    public KinesisService(AppConfig appConfig) {
+    public AgentEventService(AppConfig appConfig) {
         STREAM_NAME = appConfig.getAgentEventKDSName();
         LOOKBACK_HOURS = appConfig.getAgentEventKDSLookbackHours();
         this.kinesisClient = KinesisClient.builder()
@@ -48,6 +48,9 @@ public class KinesisService {
 
     @PostConstruct
     public void startReadingShards() {
+        if(System.getProperty("source.event") == null || !System.getProperty("source.event").equals("agent")) {
+            return;
+        }
         ListShardsRequest request = ListShardsRequest.builder()
                 .streamName(STREAM_NAME)
                 .build();
@@ -146,15 +149,6 @@ public class KinesisService {
                 agentEvent.setEventUnixTimestamp(eventUnixTimestamp);
                 agentEvent.setFullData(data);
                 agentEventRepository.save(agentEvent);
-                //log.info(agentEvent.toString());
-
-                // Save to database
-//                agentEventRepository.save(new AgentEvent(eventId, shardId, username, agentStatus, eventType,
-//                        contactId, initContactId, initMethod, contactQueue, contactState, contactChannel,
-//                        eventTimestamp, eventUnixTimestamp, data));
-//                log.info("[Shard {}] Record: {}", shardId, data);
-//                log.info("");
-                //log.info("[Shard {}] EventId: {}, Timestamp: {}, Type: {}, AgentStatus: {}, Username: {}", shardId, eventId, eventTimestamp, eventType, agentStatus, username);
             }
 
             iterator = recordsResponse.nextShardIterator();
@@ -162,11 +156,10 @@ public class KinesisService {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                log.info("Shard {} thread interrupted.", shardId);
+                log.error("Shard {} thread interrupted.", shardId);
                 break;
             }
         }
-
         log.info("Shard {} thread exiting.", shardId);
     }
 }
