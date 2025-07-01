@@ -1,0 +1,17 @@
+Login,First name,Last name,Routing profile,Security profile,Agent hierarchy,ACW timeout,Phone type,Auto accept calls
+amy,Amy,Silver,Basic Routing Profile,Agent,,0 seconds,Soft phone,No
+peter,Peter,Gold,Basic Routing Profile,Agent,,0 seconds,Soft phone,No
+ykko21,YK,Ko,Basic Routing Profile,Admin,,0 seconds,Soft phone,No
+bobwilson,Bob,Wilson,Customer Service Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+lyndajones,Lynda,Jones,Customer Service Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+tomwhite,Tom,White,Customer Service Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+chrisanderson,Chris,Anderson,Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+georgewilliams,George,Williams,Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+joemartin,Joe,Martin,Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+kensmith,Ken,Smith,Sales Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+jasonwalker,Jason,Walker,Technical Support Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+michaelcarter,Michael,Carter,Technical Support Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+richardlee,Richard,Lee,Technical Support Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+timrobinson,Tim,Robinson,Technical Support Routing Profile - Voice,Agent,,0 seconds,Soft phone,No
+,,,,,,,,
+,P@ssw0rd,,,,,,,

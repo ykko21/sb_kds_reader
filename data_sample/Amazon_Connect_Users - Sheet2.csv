@@ -1,0 +1,33 @@
+Customer,Bob (Customer Svc),Joe (Sales),Jason (Tech. Support),Time
+,Login,,,8:19:00
+,Offline > Ready,,,8:19:20
+,,Login,,8:19:40
+,,Offline > Ready, ,8:20:00
+,,,Login,8:20:30
+,,,Offline > Ready,8:20:50
+something happened that is not happy path.,,,,
+Start dialing,,,,
+,Hold,,,
+,Call Ringing started at,,,8:26:33
+,Call Answered at,,,8:26:36
+,Quick Connect Dialing at,,,
+,,,,
+,,Call Ringing started at,,8:27:42
+,,Call Answered at,,8:27:43
+,,Call Joined at,,8:28:20
+,Call disconnecting at,,,8:28:45
+,Close Contact,,,8:29:20
+,,Hold,,8:29:50
+,,,Call Ringing started at,8:32:33
+,,,Call Answered at,8:32:36
+,,,Call Joined at,8:33:10
+,,Call disconnecting at,,8:33:20
+,,Close Contact,,8:33:40
+Customer hanging up,,,,8:34:00
+,,,Close Contact,8:35:00
+,Ready > Offline,,,8:35:10
+,,,,8:35:15
+,,Ready > Offline,,8:35:50
+,,,,8:35:55
+,,,Ready > Offline,8:36:40
+,,,,8:36:45
