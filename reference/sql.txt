@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS ctr_event (
     init_method TEXT,
     init_timestamp TEXT,
     prev_contact_id TEXT,
+    last_update_timestamp TEXT,
     channel TEXT,
     conn_to_sys_timestamp TEXT,
     disconn_reason TEXT,
@@ -60,6 +61,6 @@ CREATE TABLE IF NOT EXISTS ctr_event (
     transf_compl_timestamp TEXT,
 	full_data CLOB
 );
-CREATE INDEX ctr_event_idx_01 ON ctr_event (agent_username, contact_id, init_contact_id, prev_contact_id);
+CREATE INDEX ctr_event_idx_01 ON ctr_event (agent_username, contact_id, init_contact_id, prev_contact_id, last_update_timestamp);
 
 SELECT * FROM ctr_event;

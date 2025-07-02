@@ -53,6 +53,9 @@ public class CtrEvent {
     @Column(name="prev_contact_id")
     private String previousContactId;
 
+    @Column(name="last_update_timestamp")
+    private String lastUpdateTimestamp;
+
     @Column(name="transf_compl_timestamp")
     private String transferCompletedTimestamp;
 

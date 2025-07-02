@@ -123,8 +123,9 @@ public class CtrEventService {
                 String initiationMethod = JsonUtil.getValue(rootNode, "InitiationMethod");
                 String initiationTimestamp = JsonUtil.getValue(rootNode, "InitiationTimestamp");
                 String previousContactId = JsonUtil.getValue(rootNode, "PreviousContactId");
+                String lastUpdateTimestamp = JsonUtil.getValue(rootNode, "LastUpdateTimestamp");
                 String transferCompletedTimestamp = JsonUtil.getValue(rootNode, "TransferCompletedTimestamp");
-                Optional<CtrEvent> optional = ctrEventRepository.findByAgentUsernameAndContactIdAndInitialContactIdAndPreviousContactId(agentUsername, contactId, initialContactId, previousContactId);
+                Optional<CtrEvent> optional = ctrEventRepository.findByAgentUsernameAndContactIdAndInitialContactIdAndPreviousContactIdAndLastUpdateTimestamp(agentUsername, contactId, initialContactId, previousContactId, lastUpdateTimestamp);
 
                 if(optional.isPresent()) {
                     log.warn("Duplicate event found for agentUsername:{},contactId:{},initialContactId:{},previousContactId:{}. Skipping.", agentUsername, contactId, initialContactId, previousContactId);
