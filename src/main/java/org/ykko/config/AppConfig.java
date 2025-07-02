@@ -23,5 +23,11 @@ public class AppConfig {
     @Value("${aws.kds.contact-event.lookback-hours}")
     private Long contactEventKDSLookbackHours;
 
+    @Value("${aws.kds.ctr-event.name}")
+    private String ctrEventKDSName;
+
+    @Value("${aws.kds.ctr-event.lookback-hours}")
+    private Long ctrEventKDSLookbackHours;
+
 
 }

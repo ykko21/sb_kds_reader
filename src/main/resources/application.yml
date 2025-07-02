@@ -25,10 +25,10 @@ aws:
   kds:
     agent-event:
       name: aws-connect-agent-events
-      lookback-hours: 8
-    contact-trace-record:
+      lookback-hours: 18
+    ctr-event:
       name: aws-connect-ctr-events
-      lookback-hours: 8
+      lookback-hours: 18
     contact-event:
       name: aws-connect-contact-events
-      lookback-hours: 8
+      lookback-hours: 18
