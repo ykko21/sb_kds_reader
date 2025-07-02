@@ -18,8 +18,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: false
-server:
-  port: 8090
 aws:
   region: us-east-1
   kds:
